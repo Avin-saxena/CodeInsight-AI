@@ -1,0 +1,7 @@
+{
+  "question": "What functions does api.py have?",
+  "response": "The file api.py has two functions:\n\n1. ask_url: This function has two parameters - 'url: str' and 'question: str', both of type string and with no default values.\n\n2. ask_file: This function also has two parameters - 'file: UploadFile' and 'question: str'. The 'file: UploadFile' parameter is of type 'UploadFile' and 'question: str' is of type string. Both parameters have no default values.",
+  "timestamp": "2024-11-12T04:00:23.529678",
+  "saved_at": "2024-11-12T04:00:23.529678",
+  "file_path": "storage\\gpt_responses\\2024-11-12\\20241112_040023_What functions does apipy have.json"
+}

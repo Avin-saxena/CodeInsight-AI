@@ -1,0 +1,7 @@
+{
+  "question": "What functions does api.py have?",
+  "response": "The file api.py has two functions:\n\n1. ask_url with parameters:\n   - url: str\n   - question: str\n\n2. ask_file with parameters:\n   - file: UploadFile\n   - question: str",
+  "timestamp": "2024-11-12T03:57:36.061495",
+  "saved_at": "2024-11-12T03:57:36.062489",
+  "file_path": "storage\\gpt_responses\\2024-11-12\\20241112_035736_What functions does apipy have.json"
+}

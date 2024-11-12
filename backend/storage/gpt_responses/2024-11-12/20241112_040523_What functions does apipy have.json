@@ -1,0 +1,367 @@
+{
+  "question": "What functions does api.py have?",
+  "response": "1. download_pdf\n2. preprocess\n3. pdf_to_text\n4. text_to_chunks\n5. __init__\n6. fit\n7. __call__\n8. get_text_embedding\n9. load_recommender\n10. generate_text\n11. generate_answer\n12. load_openai_key\n13. ask_url\n14. ask_file",
+  "timestamp": "2024-11-12T04:05:23.494680",
+  "analysis_data": {
+    "cross_reference_analysis": {
+      "function_usage": {
+        "direct_function_calls": [],
+        "imported_functions": []
+      },
+      "api_integration": {
+        "api_calls": [
+          {
+            "endpoint": "ask_url'",
+            "http_method": "post",
+            "client_library": "requests",
+            "arguments": {
+              "url": "f'{lcserve_host}/ask_url'",
+              "json": "{'url': url, **_data}"
+            }
+          },
+          {
+            "endpoint": "ask_file'",
+            "http_method": "post",
+            "client_library": "requests",
+            "arguments": {
+              "url": "f'{lcserve_host}/ask_file'",
+              "params": "{'input_data': json.dumps(_data)}",
+              "files": "{'file': f}"
+            }
+          }
+        ]
+      },
+      "shared_dependencies": []
+    },
+    "function_call_chains": {
+      "app_py": {
+        "ask_api": [
+          "ValueError",
+          "json.dumps",
+          "requests.post",
+          "lcserve_host.startswith",
+          "question.strip",
+          "url.strip",
+          "open",
+          "r.json"
+        ]
+      },
+      "api_py": {
+        "download_pdf": [
+          "urllib.request.urlretrieve"
+        ],
+        "preprocess": [
+          "re.sub",
+          "text.replace"
+        ],
+        "pdf_to_text": [
+          "fitz.open",
+          "doc.close",
+          "range",
+          "doc.load_page",
+          "text_list.append",
+          "doc.load_page(i).get_text",
+          "preprocess"
+        ],
+        "text_to_chunks": [
+          "enumerate",
+          "' '.join",
+          "range",
+          "chunks.append",
+          "t.split",
+          "len",
+          "' '.join(chunk).strip"
+        ],
+        "__init__": [
+          "hub.load"
+        ],
+        "fit": [
+          "self.nn.fit",
+          "min",
+          "len",
+          "NearestNeighbors",
+          "self.get_text_embedding"
+        ],
+        "__call__": [
+          "self.nn.kneighbors",
+          "self.use"
+        ],
+        "get_text_embedding": [
+          "np.vstack",
+          "self.use",
+          "range",
+          "embeddings.append",
+          "len"
+        ],
+        "load_recommender": [
+          "pdf_to_text",
+          "text_to_chunks",
+          "recommender.fit",
+          "SemanticSearch"
+        ],
+        "generate_text": [
+          "str",
+          "completion"
+        ],
+        "generate_answer": [
+          "recommender",
+          "generate_text"
+        ],
+        "load_openai_key": [
+          "os.environ.get",
+          "ValueError"
+        ],
+        "ask_url": [
+          "generate_answer",
+          "download_pdf",
+          "load_recommender",
+          "load_openai_key"
+        ],
+        "ask_file": [
+          "generate_answer",
+          "NamedTemporaryFile",
+          "load_recommender",
+          "shutil.copyfileobj",
+          "load_openai_key",
+          "Path",
+          "str"
+        ]
+      }
+    },
+    "node_type_frequencies": {
+      "app_py": {
+        "module": 1,
+        "import_statement": 3,
+        "import": 4,
+        "dotted_name": 5,
+        "identifier": 136,
+        "import_from_statement": 1,
+        "from": 1,
+        "aliased_import": 1,
+        "as": 3,
+        "function_definition": 1,
+        "def": 1,
+        "parameters": 1,
+        "(": 30,
+        "typed_parameter": 5,
+        ":": 24,
+        "type": 6,
+        ",": 28,
+        ")": 30,
+        "->": 1,
+        "block": 13,
+        "if_statement": 6,
+        "if": 6,
+        "not_operator": 1,
+        "not": 1,
+        "call": 29,
+        "attribute": 33,
+        ".": 33,
+        "argument_list": 29,
+        "string": 36,
+        "string_start": 36,
+        "string_content": 33,
+        "string_end": 36,
+        "return_statement": 5,
+        "return": 5,
+        "boolean_operator": 2,
+        "comparison_operator": 7,
+        "==": 3,
+        "and": 2,
+        "none": 2,
+        "!=": 4,
+        "expression_statement": 20,
+        "assignment": 13,
+        "=": 32,
+        "dictionary": 5,
+        "{": 9,
+        "pair": 6,
+        "}": 9,
+        "interpolation": 4,
+        "keyword_argument": 19,
+        "dictionary_splat": 1,
+        "**": 1,
+        "else_clause": 1,
+        "else": 1,
+        "with_statement": 5,
+        "with": 5,
+        "with_clause": 5,
+        "with_item": 5,
+        "as_pattern": 2,
+        "as_pattern_target": 2,
+        "integer": 3,
+        "raise_statement": 1,
+        "raise": 1,
+        "subscript": 1,
+        "[": 4,
+        "]": 4,
+        "list": 3,
+        "true": 2,
+        "comment": 2
+      },
+      "api_py": {
+        "module": 1,
+        "import_statement": 8,
+        "import": 14,
+        "dotted_name": 20,
+        "identifier": 340,
+        ".": 43,
+        "import_from_statement": 6,
+        "from": 6,
+        "aliased_import": 2,
+        "as": 4,
+        "expression_statement": 58,
+        "assignment": 43,
+        "=": 67,
+        "none": 6,
+        "function_definition": 14,
+        "def": 14,
+        "parameters": 14,
+        "(": 76,
+        ",": 47,
+        ")": 76,
+        ":": 37,
+        "block": 29,
+        "call": 55,
+        "attribute": 41,
+        "argument_list": 55,
+        "string": 38,
+        "string_start": 38,
+        "string_content": 39,
+        "escape_sequence": 9,
+        "string_end": 38,
+        "\\": 1,
+        "return_statement": 12,
+        "return": 12,
+        "default_parameter": 10,
+        "integer": 17,
+        "if_statement": 5,
+        "if": 5,
+        "comparison_operator": 6,
+        "is": 3,
+        "list": 5,
+        "[": 17,
+        "]": 17,
+        "for_statement": 5,
+        "for": 7,
+        "in": 7,
+        "binary_operator": 14,
+        "-": 1,
+        "list_comprehension": 2,
+        "for_in_clause": 2,
+        "pattern_list": 1,
+        "subscript": 10,
+        "slice": 2,
+        "+": 13,
+        "parenthesized_expression": 7,
+        "boolean_operator": 2,
+        ">": 1,
+        "and": 2,
+        "<": 1,
+        "!=": 1,
+        "continue_statement": 1,
+        "continue": 1,
+        "interpolation": 3,
+        "{": 4,
+        "}": 4,
+        "class_definition": 1,
+        "class": 1,
+        "false": 3,
+        "keyword_argument": 14,
+        "true": 2,
+        "else_clause": 1,
+        "else": 1,
+        "global_statement": 1,
+        "global": 1,
+        "comment": 1,
+        "try_statement": 1,
+        "try": 1,
+        "dictionary": 1,
+        "pair": 2,
+        "float": 1,
+        "except_clause": 1,
+        "except": 1,
+        "as_pattern": 2,
+        "as_pattern_target": 2,
+        "augmented_assignment": 4,
+        "+=": 4,
+        "concatenated_string": 1,
+        "->": 2,
+        "type": 6,
+        "raise_statement": 1,
+        "raise": 1,
+        "decorated_definition": 2,
+        "decorator": 2,
+        "@": 2,
+        "typed_parameter": 4,
+        "async": 1,
+        "with_statement": 1,
+        "with": 1,
+        "with_clause": 1,
+        "with_item": 1
+      }
+    },
+    "error_handling": {
+      "app_py": [],
+      "api_py": [
+        "generate_text"
+      ]
+    },
+    "async_functions": {
+      "app_py": [],
+      "api_py": [
+        "ask_file"
+      ]
+    },
+    "decorated_functions": {
+      "app_py": [],
+      "api_py": [
+        {
+          "name": "ask_url",
+          "decorators": []
+        },
+        {
+          "name": "ask_file",
+          "decorators": []
+        }
+      ]
+    },
+    "function_parameters": {
+      "app_py": [],
+      "api_py": [
+        {
+          "function": "ask_url",
+          "parameters": [
+            {
+              "name": "url: str",
+              "type": "str",
+              "default": null
+            },
+            {
+              "name": "question: str",
+              "type": "str",
+              "default": null
+            }
+          ]
+        },
+        {
+          "function": "ask_file",
+          "parameters": [
+            {
+              "name": "file: UploadFile",
+              "type": "UploadFile",
+              "default": null
+            },
+            {
+              "name": "question: str",
+              "type": "str",
+              "default": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "saved_at": "2024-11-12T04:05:23.495678",
+  "file_path": "storage\\gpt_responses\\2024-11-12\\20241112_040523_What functions does apipy have.json"
+}
