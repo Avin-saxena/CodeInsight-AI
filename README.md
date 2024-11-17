@@ -146,7 +146,7 @@ project_root/
 
 3. Start the Server
     ```bash
-    uvicorn app.main:app --reload
+    uvicorn main:app --reload --log-level debug
     ```
     The backend will be running at http://localhost:8000.
 
