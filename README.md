@@ -96,7 +96,7 @@ project_root/
 
 3. Install Dependencies
     ```bash
-    pip install -r backend/app/requirements.txt
+    pip install -r app/requirements.txt
     ```
 
 
